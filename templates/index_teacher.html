@@ -1,0 +1,22 @@
+{% extends "main.html" %}
+
+{% block header %}
+    <h1>欢迎使用该题库系统，{{ username }}</h1>
+{% end %}
+
+{% block body %}
+    <a href="/add_test" class="add_test">添加新试题</a>
+    <h2>已发布的试题：</h2>
+
+    {% for test in tests %}
+        {% raw modules.Test(test) %}
+    {%  end %}
+
+    <div id="logout">
+        <form action="/" method="POST">
+            {% raw xsrf_form_html() %}
+            <input type="submit" value="退出"/>
+        </form>
+    </div>
+{% end %}
+

@@ -1,0 +1,10 @@
+.test{
+    width: 500px;
+	border: 1px solid #555;
+	padding: 0 15px 0 15px;
+	margin: 15px;
+	background-color:#F5F5F5;
+}
+.test .test_title{
+    color: rgb(226, 30, 79);
+}

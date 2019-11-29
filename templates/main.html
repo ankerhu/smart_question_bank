@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>{{ page_title }}</title>
+        <link rel="stylesheet" href="{{ static_url('css/style.css') }}" />
+    </head>
+
+    <body>
+        <div id="container">
+            <header>
+                {% block header %}
+                <h1>扬美实验学校题库系统</h1>
+                {% end %}
+            </header>
+            <div id="main">
+                <div id="content">
+                    {% block body %}
+                    {% end %}
+                </div>
+            </div>
+            <footer>
+                {% block footer %}
+                    <p>扬美实验学校出品，技术问题请咨询信息科组。</p>
+                {% end %}
+            </footer>
+        </div>
+        <script src="{{ static_url('js/script.js') }}"></script>
+    </body>
+</html>
