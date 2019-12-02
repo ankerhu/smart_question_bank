@@ -5,6 +5,8 @@ import tornado.options
 import os.path
 import base64,uuid
 from pymongo import MongoClient
+import tornado.gen
+import motor.motor_tornado
 
 from tornado.options import define,options
 define('port',default = 8000 ,help='run on the given port',type=int)
@@ -17,13 +19,14 @@ class LoginHandler(BaseHandler):
     def get(self):
         self.render('login.html',message = '',account = None)
 
+    @tornado.gen.coroutine
     def post(self):
         account = self.get_argument('account')
         password = self.get_argument('password')
         teachers = self.application.db.teachers
         students = self.application.db.students
-        student = students.find_one({'student_id':account})
-        teacher = teachers.find_one({'teacher_id':account})
+        student = yield students.find_one({'student_id':account})
+        teacher = yield teachers.find_one({'teacher_id':account})
         if student and password == '123456':
             self.set_secure_cookie('username',student['name'] + 'student',expires_days = 1)
             self.render('index_student.html',username = student['name'],page_title = '欢迎',tests =[{'title':'第一个试题'},{'title':'第二个试题'}])
@@ -81,7 +84,8 @@ class Application(tornado.web.Application):
         'login_url':'/login',
         'debug':True
     }
-        client=MongoClient('localhost',27017)
+        #client=MongoClient('localhost',27017)
+        client = motor.motor_tornado.MotorClient('mongodb://localhost:27017/')
         self.db = client.smart_question_bank
         tornado.web.Application.__init__(self,handlers,**settings)
 
