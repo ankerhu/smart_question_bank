@@ -1,0 +1,30 @@
+#mask-kk{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    background: #666;
+    opacity: 0.5;
+    filter: alpha(opacity=50)-moz-opacity;
+    display:none;
+}
+
+#popup-kk{
+    position: absolute;
+    left: 50%;
+    width: 540px;
+    height: 578px;
+    background: #fff;
+    z-index: 1000;
+    display: none;
+    border-radius:5px;
+}
+
+#close {
+    position: absolute;
+    top: 21px;
+    right: 20px;
+    cursor:pointer;
+}

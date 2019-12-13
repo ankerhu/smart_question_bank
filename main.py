@@ -40,7 +40,7 @@ class LoginHandler(BaseHandler):
 class WelcomeHandler(BaseHandler):
     @tornado.web.authenticated
     def get(self):
-        if self.current_user[-7:] == 'student':
+        if self.current_user[-7:] == b'student':
             self.render('index_student.html',username = self.current_user[:-7],page_title = '欢迎',tests =[{'title':'第一个试题'},{'title':'第二个试题'}])
         else:
             self.render('index_teacher.html',username = self.current_user[:-7],page_title = '欢迎',tests =[{'title':'第一个试题'},{'title':'第二个试题'}])
@@ -51,8 +51,12 @@ class WelcomeHandler(BaseHandler):
         #self.redirect('/')
 
 class AddTestHandler(BaseHandler):
+    @tornado.web.authenticated
     def get(self):
-        self.render('add_test.html')
+        self.render('add_test.html',page_title = '添加习题')
+
+    def post(self):
+       pass
 
 class TestModule(tornado.web.UIModule):
     def render(self,test):
@@ -67,6 +71,17 @@ class TestModule(tornado.web.UIModule):
     def javascript_files(self):
         return 'js/test_list.js'
 
+class DoTestModule(tornado.web.UIModule):
+    def render(self,add_test):
+        return self.render_string(
+            'modules/do_test.html',
+            add_test = add_test
+        )
+    def css_files(self):
+        return 'css/do_test.css'
+
+    def javascript_files(self):
+        return 'js/do_test.js'
 
 class Application(tornado.web.Application):
     def __init__(self):
@@ -78,7 +93,7 @@ class Application(tornado.web.Application):
         settings = {
         'template_path':os.path.join(os.path.dirname(__file__),'templates'),
         'static_path':os.path.join(os.path.dirname(__file__), "static"),
-        'ui_modules':{'Test':TestModule},
+        'ui_modules':{'Test':TestModule,'DoTest':DoTestModule},
         'cookie_secret':base64.b64encode(uuid.uuid4().bytes + uuid.uuid4().bytes),
         'xsrf_cookies':True,
         'login_url':'/login',

@@ -2,6 +2,8 @@
     <head>
         <title>{{ page_title }}</title>
         <link rel="stylesheet" href="{{ static_url('css/style.css') }}" />
+        {% block css %}
+        {% end %}
     </head>
 
     <body>
@@ -23,6 +25,8 @@
                 {% end %}
             </footer>
         </div>
-        <script src="{{ static_url('js/script.js') }}"></script>
+        <script src="{{ static_url('js/jquery-3.4.1.min.js') }}"></script>
+        {% block js %}
+        {% end %}
     </body>
 </html>
