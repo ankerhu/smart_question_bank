@@ -1,0 +1,23 @@
+{% extends "teacher_index.html" %}
+
+{% block header %}
+    <h1 id="welcome">欢迎使用该题库系统，{{ username }}</h1>
+{% end %}
+
+{% block main_menu %}
+<ul>
+    <li><a href="/">发布新试题</a></li>
+    <li  class="active"><a href="/teacher_test_added">已发布试题</a></li>
+    <li><a href="/personal">个人中心</a></li>
+    <li><a href="/logout">退出</a></li>
+</ul>
+{% end %}
+
+{% block body %}
+    <h2>已发布的试题：</h2>
+    {% for test in tests %}
+        {% raw modules.Test(test) %}
+    {%  end %}
+
+{% end %}
+

@@ -52,3 +52,9 @@ body{
     cursor: pointer;
     background:#D8D8D8;
 }
+
+#welcome{ 
+    color: transparent;
+    -webkit-text-stroke: 1px red;
+    letter-spacing: 0.04em;
+}

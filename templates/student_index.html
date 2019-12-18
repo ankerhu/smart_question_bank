@@ -1,0 +1,21 @@
+{% extends "main.html" %}
+
+{% block header %}
+    <h1>欢迎使用该题库系统，{{ username }}</h1>
+{% end %}
+
+{% block main_menu %}
+<ul>
+    <li class="active"><a href="index.html">未完成试题</a></li>
+    <li><a href="about.html">已完成试题</a></li>
+    <li><a href="gallery.html">个人中心</a></li>
+    <li><a href="/logout">退出</a></li>
+</ul>
+{% end %}
+
+{% block body %}
+    {% for test in tests %}
+        {% raw modules.Test(test) %}
+    {%  end %}
+{% end %}
+

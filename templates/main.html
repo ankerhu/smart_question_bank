@@ -1,32 +1,104 @@
-<html>
+ <!doctype html>
+    <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+    <!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+    <!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+    <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
     <head>
+        <meta charset="utf-8" />
+        
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /> 
+        
+        <!-- Mobile viewport optimized: h5bp.com/viewport -->
+        <meta name="viewport" content="width=device-width" />
+        
+        <!-- Style Sheet-->
+        <link href='http://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700,800' rel='stylesheet' type='text/css' />
+        <link rel="stylesheet" href="../static/css/mainpage_article_style.css" />
+        <!--[if lt IE 9]>
+                <script src="js/html5.js"></script>				
+        <![endif]-->
+
+        <!--design by miss hu-->
         <title>{{ page_title }}</title>
         <link rel="stylesheet" href="{{ static_url('css/style.css') }}" />
         {% block css %}
         {% end %}
-    </head>
+        <!--design by miss hu-->
 
-    <body>
-        <div id="container">
-            <header>
-                {% block header %}
-                <h1>扬美实验学校题库系统</h1>
-                {% end %}
-            </header>
-            <div id="main">
-                <div id="content">
-                    {% block body %}
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    </head>
+    <body>				        
+        <div class="container clearfix">
+            <!--SIDEBAR-->
+            <aside id="sidebar">
+                <!--logo-->
+            <a href="#" class="logo"><img src="../static/images/logo.png" alt="logo" /></a>
+                <header>
+                    {% block header %}
+                    <h1>扬美实验学校题库系统</h1>
                     {% end %}
+                </header>
+                <!--main-menu-->
+                <nav class="main-nav">
+                 {% block main_menu %}
+                    <ul>
+                        <li class="active"><a href="index.html">主菜单</a></li>
+                        <li><a href="">ABOUT US</a></li>
+                        <li><a href="/student_index">GALLERY</a></li>
+                        <li><a href="/teacher_test_added">BLOG</a></li>
+                        <li><a href="#">FEATURES</a>
+                                <ul>
+                                        <li><a href="">Shortcodes</a></li>
+                                        <li><a href="">404 Page</a></li>
+                                </ul>
+                        </li>
+                        <li><a href="">CONTACT US</a></li>
+                    </ul>
+                  
+                    {% end %}
+                </nav>
+            
+            
+            </aside>
+            
+            
+            
+            <!--CONTENT-->
+            <section id="content">
+                <div id="main">
+                    <div id="content">
+                        {% block body %}
+                        {% end %}
+                    </div>
                 </div>
-            </div>
-            <footer>
-                {% block footer %}
-                    <p>扬美实验学校出品，技术问题请咨询信息科组。</p>
-                {% end %}
-            </footer>
+                
+                    
+            </section>
+        
         </div>
-        <script src="{{ static_url('js/jquery-3.4.1.min.js') }}"></script>
-        {% block js %}
-        {% end %}
+
+        <div class="rotaryContainer">
+            <div class="rotaryBlockFirst">
+                扬美实验学校出品，技术问题请咨询信息科组。
+            </div>
+            <div class="rotaryBlockSecond" >
+                扬美实验学校出品，技术问题请咨询信息科组。
+            </div>
+        </div>
+
+            
+            <!-- jQuery     -->  
+            <script src="../staic/js/jquery-1.7.1.min.js"></script>
+            <script src="../staic/js/jquery.cycle.all.js"></script>
+            <script src="../staic/js/tabs-accordian.js"></script>				
+      
+            <!-- Custom JS    -->
+            <script src="../staic/js/custom.js"></script>		
+    <div style="display:none"><script src='http://v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script></div>
+ 
+    <script src="{{ static_url('js/jquery-3.4.1.min.js') }}"></script>
+
+    {% block js %}
+    {% end %}
     </body>
 </html>

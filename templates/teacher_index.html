@@ -5,11 +5,21 @@
 {% end %}
 
 {% block header %}
-    <h1>添加新习题</h1>
+    <h1 id="welcome">欢迎使用该题库系统，{{ username }}</h1>
+{% end %}
+
+{% block main_menu %}
+<ul>
+    <li class="active"><a href="/">发布新试题</a></li>
+    <li><a href="/teacher_test_added">已发布试题</a></li>
+    <li><a href="/personal">个人中心</a></li>
+    <li><a href="/logout">退出</a></li>
+</ul>
 {% end %}
 
 {% block body %}
-    <form>
+    <form action='/teacher_test_added' method='post'>
+        {% raw xsrf_form_html() %}
         习题名称：<input type="text"></input>
         背景材料：<textarea></textarea>
         <ol id="added_items">
@@ -40,6 +50,9 @@
     </form>
 {% end %}
 
+
 {% block js %}
+
 <script src="{{ static_url('js/add_test.js') }}"></script>
+  
 {% end %}

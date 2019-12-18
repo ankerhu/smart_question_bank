@@ -3,18 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<title>扬美实验学校题库系统</title>
+<title >扬美实验学校题库系统</title>
 <meta name="description" content="登录界面">
 <meta name="keywords" content="登录界面">
 <link rel="stylesheet" href="{{ static_url('css/login.css') }}" />
 
 </head>
 <body>
-        {% if message %}
-        <p style="color:red">{{ message }}</p>
+		{% if message %}
+		<script>alert('{{ message }}');</script>
         {% end %}
 <div id="login">
-<h1>题库系统登录</h1>	
+<h1 id="welcome">题库系统登录</h1>	
 	<form action='/login' method='post'>
         {% raw xsrf_form_html() %}
 		<p><input placeholder="学号" type='text'  id="user" name='account'/></p>

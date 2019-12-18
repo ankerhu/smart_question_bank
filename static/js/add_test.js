@@ -16,7 +16,7 @@ var question = {
 var total_points = 0
 
 $('#add_question').click(function() {
-
+    console.log(9999999)
     $('#mask-kk').css({
         display: 'block',
         height: $(document).height()
